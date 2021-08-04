@@ -135,7 +135,7 @@ Edit a note with different user=raj(in request header)
     
 
 
-Search note by created by, updated by or note Id
+Search note by created by and updated by or note Id or note text
 
      GET http://localhost:8080/notes/1
     
@@ -149,18 +149,10 @@ Search note by created by, updated by or note Id
     "updatedDate": "2021-08-03"
     }
     
-    GET http://localhost:8080/notes?createdBy=utpal
+    GET http://localhost:8080/notes?createdBy=utpal&updatedBy=utpal
     
     Response:
     [
-    {
-        "noteId": 1,
-        "noteText": "test updated again",
-        "createdByUser": "utpal",
-        "updatedByUser": "raj",
-        "createdDate": "2021-08-03",
-        "updatedDate": "2021-08-03"
-    },
     {
         "noteId": 2,
         "noteText": "test2",
@@ -171,19 +163,10 @@ Search note by created by, updated by or note Id
     }
    ]
    
-     GET http://localhost:8080/notes?updatedBy=raj
+     GET http://localhost:8080/notes?createdBy=utpal&updatedBy=raj&text=test2
     
     Response:
-    [
-    {
-        "noteId": 1,
-        "noteText": "test updated again",
-        "createdByUser": "utpal",
-        "updatedByUser": "raj",
-        "createdDate": "2021-08-03",
-        "updatedDate": "2021-08-03"
-    }
-    ]
+    []
     
 
 
