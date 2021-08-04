@@ -7,7 +7,7 @@ Prerequisites: Java 8, Maven 3, Git Bash(for checking out Git source code)
 
 # Build and run: 
 
-From git bash terminal, clone note-service from git.
+From git bash terminal, clone note-api from git.
 
 $ git clone https://github.com/utpaljai/note-api.git
 
