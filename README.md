@@ -19,6 +19,9 @@ $ mvn spring-boot:run
 
 This will start embedded Apache Tomcat/9.0.36 server
 
+# Swagger documentation - spring rest open api
+    http://localhost:8080/swagger-ui-custom.html
+    
 # Test rest end points using postman
 
 Create one or more notes:
