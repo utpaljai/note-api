@@ -26,24 +26,15 @@ public interface NoteService {
     List<NoteResponse> getAllNotes();
 
     /**
-     * Returns all notes created by given user
+     * Search notes by created by or updated by or note text
      * 
-     * @param user
-     *            user who created the notes
-     * 
-     * @return List of NoteResponse
-     */
-    List<NoteResponse> getAllNotesByCreatedUser(String user);
-
-    /**
-     * Returns all notes updated by given user
-     * 
-     * @param user
-     *            user who updated the notes
+     * @param createdBy
+     * @param updatedBy
+     * @param text
      * 
      * @return List of NoteResponse
      */
-    List<NoteResponse> getAllNotesByUpdatedUser(String user);
+    List<NoteResponse> searchNotes(String createdBy, String updatedBy, String text);
 
     /**
      * Deletes one or more notes.

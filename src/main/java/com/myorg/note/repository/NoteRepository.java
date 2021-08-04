@@ -10,8 +10,8 @@ import com.myorg.note.entity.Note;
 @Repository
 public interface NoteRepository extends JpaRepository<Note, Integer> {
 
-    List<Note> findByCreatedBy(String user);
+    List<Note> findByCreatedByAndModifiedBy(String createdBy, String updatedBy);
 
-    List<Note> findByModifiedBy(String user);
+    List<Note> findByCreatedByAndModifiedByAndNoteText(String createdBy, String updatedBy, String text);
 
 }

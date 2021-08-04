@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -55,16 +56,15 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<NoteResponse> getAllNotesByCreatedUser(String user) {
-        return noteRepository.findByCreatedBy(user).stream().map(noteToNoteResponseConverter::convert)
-                .collect(Collectors.toList());
-    }
+    public List<NoteResponse> searchNotes(String createdBy, String updatedBy, String text) {
+        List<Note> notes = new ArrayList<>();
+        if (StringUtils.isBlank(text)) {
+            notes = noteRepository.findByCreatedByAndModifiedBy(createdBy, updatedBy);
+        } else {
+            notes = noteRepository.findByCreatedByAndModifiedByAndNoteText(createdBy, updatedBy, text);
+        }
 
-    @Override
-    @Transactional(readOnly = true)
-    public List<NoteResponse> getAllNotesByUpdatedUser(String user) {
-        return noteRepository.findByModifiedBy(user).stream().map(noteToNoteResponseConverter::convert)
-                .collect(Collectors.toList());
+        return notes.stream().map(noteToNoteResponseConverter::convert).collect(Collectors.toList());
     }
 
     @Override
